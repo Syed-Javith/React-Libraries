@@ -9,13 +9,15 @@ export interface Count{
   count : number
   inc : () => void ,
   dec : () => void ,
-  reset : () => void
+  reset : () => void ,
+  incByValue : (val : number) => void
 } 
 export const useStore = create<Count>((set) => ({
   count : 0 ,
   inc : () => set( (state) => ({ count : state.count + 1}) ) ,
   dec : () => set((state) => ({ count : state.count - 1 })) ,
-  reset : () => set( ( { count : 0 } ) )
+  reset : () => set( ( { count : 0 } ) ) ,
+  incByValue : (val : number) => set( (state) => ({ count : state.count + val }))
 }) )
 root.render(
     <App />
